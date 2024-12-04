@@ -31,6 +31,14 @@ This is a Node.js CLI application written in TypeScript that allows you to encod
     help     Display help for blur-hash-oclif.
     plugins  List installed plugins.
 ```
+
+## Testing
+
+To run tests
+```
+  $ npm run test
+```
+
 ## Screenshot
 
 ![Screenshot](./screenshot/Screenshot.png)
