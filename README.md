@@ -33,4 +33,4 @@ This is a Node.js CLI application written in TypeScript that allows you to encod
 ```
 ## Screenshot
 
-[!Screenshot](screenshot/Screenshot.png "Screenshot")
+![Screenshot](./screenshot/Screenshot.png)
