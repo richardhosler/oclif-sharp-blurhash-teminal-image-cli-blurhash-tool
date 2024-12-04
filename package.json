@@ -1,0 +1,75 @@
+{
+  "name": "blur-hash-oclif",
+  "description": "A new CLI generated with oclif",
+  "version": "0.0.0",
+  "author": "richardhosler",
+  "bin": {
+    "blur-hash-oclif": "./bin/run.js"
+  },
+  "bugs": "https://github.com/richardhosler/blur-hash-oclif/issues",
+  "dependencies": {
+    "@oclif/core": "^4.0.33",
+    "@oclif/plugin-help": "^6",
+    "@oclif/plugin-plugins": "^5",
+    "@oclif/table": "github:oclif/table",
+    "blurhash": "^2.0.5",
+    "sharp": "^0.33.5",
+    "terminal-image": "^3.0.0"
+  },
+  "devDependencies": {
+    "@oclif/prettier-config": "^0.2.1",
+    "@oclif/test": "^4",
+    "@types/chai": "^4",
+    "@types/mocha": "^10",
+    "@types/node": "^18",
+    "chai": "^4",
+    "eslint": "^8",
+    "eslint-config-oclif": "^5",
+    "eslint-config-oclif-typescript": "^3",
+    "eslint-config-prettier": "^9",
+    "mocha": "^10",
+    "oclif": "^4",
+    "shx": "^0.3.3",
+    "ts-node": "^10",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "/bin",
+    "/dist",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/richardhosler/blur-hash-oclif",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "type": "module",
+  "oclif": {
+    "bin": "blur-hash-oclif",
+    "dirname": "blur-hash-oclif",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-plugins"
+    ]
+  },
+  "repository": "richardhosler/blur-hash-oclif",
+  "scripts": {
+    "build": "shx rm -rf dist && shx rm tsconfig.tsbuildinfo && tsc -b",
+    "lint": "eslint . --ext .ts",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "shx rm test/output.png",
+    "prepack": "oclif manifest && oclif readme",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md"
+  },
+  "types": "dist/index.d.ts",
+  "overrides": {
+    "ajv": "^8.17.1",
+    "whatwg-url": "^14.0.0"
+  }
+}
