@@ -10,22 +10,30 @@ export default class Convert extends Command {
     output: Args.string({ description: "file to output", required: true })
   }
 
-  static override description = "convert an image file to a blurred image file"
+  static override description = "convert an image file to a blurred image file";
 
   static override examples = [
     "<%= config.bin %> <%= command.id %>",
   ]
 
   static override flags = {
-    components: Flags.string({ char: "c", description: "components to use x*y eg. [componentX-componentY]" }),
-    dimensions: Flags.string({ char: "d", description: "dimensions of output file [width-height]" }),
+    components: Flags.string({
+      char: "c",
+      description: "components to use x*y eg. [componentX-componentY]"
+    }),
+    dimensions: Flags.string({
+      char: "d",
+      description: "dimensions of output file [width-height]"
+    }),
   }
 
   public async run(): Promise<void> {
     const { args, flags } = await this.parse(Convert)
 
-    const [componentX, componentY] = flags.components ? flags.components.split("-") : ["4", "3"];
-    const [widthString, heightString] = flags.dimensions ? flags.dimensions.split("-") : ["40", "30"];
+    const [componentX, componentY] = flags.components ?
+      flags.components.split("-") : ["4", "3"];
+    const [widthString, heightString] = flags.dimensions ?
+      flags.dimensions.split("-") : ["40", "30"];
     const height = parseInt(heightString);
     const width = parseInt(widthString);
 
@@ -34,7 +42,12 @@ export default class Convert extends Command {
       .raw()
       .ensureAlpha()
       .toBuffer({ resolveWithObject: true });
-    const blurhash = encode(new Uint8ClampedArray(data), info.width, info.height, parseInt(componentX), parseInt(componentY));
+    const blurhash = encode(
+      new Uint8ClampedArray(data),
+      info.width, info.height,
+      parseInt(componentX),
+      parseInt(componentY)
+    );
 
     const pixels = decode(blurhash, width, height);
     const buffer = Buffer.from(pixels);

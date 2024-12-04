@@ -32,7 +32,8 @@ export function displayTable({ boldHeading, data }: IDisplayTable) {
     printSeparator(columnWidths, boldHeading);
 
     for (const row of data.values) {
-        const splitRows = row.map((value, index) => splitString(value, columnWidths[index] - 2));
+        const splitRows = row.map((value, index) =>
+            splitString(value, columnWidths[index] - 2));
         const maxRows = Math.max(...splitRows.map(row => row.length));
 
         for (let i = 0; i < maxRows; i++) {
@@ -62,7 +63,8 @@ function adjustColumnWidths(columnWidths: number[], maxTotal: number): number[] 
                 largestIndex = i;
             }
         }
-        columnWidths[largestIndex] = Math.max(0, columnWidths[largestIndex] - (currentTotal - maxTotal));
+        columnWidths[largestIndex] = Math.max(0,
+            columnWidths[largestIndex] - (currentTotal - maxTotal));
         currentTotal = columnWidths.reduce((acc, num) => acc + num, 0);
     }
 
@@ -121,7 +123,8 @@ function printTableTop(columnWidths: number[], bold: boolean) {
     const junctionChar = bold ? "┳" : "┬";
     const endChar = bold ? "┓" : "┐";
 
-    const topRow = columnWidths.map(width => separatorChar.repeat(width)).join(junctionChar);
+    const topRow = columnWidths.map(width =>
+        separatorChar.repeat(width)).join(junctionChar);
     const output = `${topChar}${topRow}${endChar}\n`;
 
     stdout.write(output);
@@ -133,7 +136,8 @@ function printSeparator(columnWidths: number[], bold: boolean) {
     const junctionChar = bold ? "╇" : "┼";
     const endChar = bold ? "┩" : "┤";
 
-    const separatorRow = columnWidths.map(width => separatorChar.repeat(width)).join(junctionChar);
+    const separatorRow = columnWidths.map(width =>
+        separatorChar.repeat(width)).join(junctionChar);
     const output = `${cornerChar}${separatorRow}${endChar}\n`;
 
     stdout.write(output);

@@ -14,9 +14,18 @@ export default class Decode extends Command {
   static override description = "Decode a given blurhash to an image.";
 
   static override flags = {
-    file: Flags.string({ char: "f", description: "output file path" }),
-    height: Flags.integer({ char: "h", description: "height of the decoded image" }),
-    preview: Flags.boolean({ char: "p", description: "preview the image in terminal" }),
+    file: Flags.string({
+      char: "f",
+      description: "output file path"
+    }),
+    height: Flags.integer({
+      char: "h",
+      description: "height of the decoded image"
+    }),
+    preview: Flags.boolean({
+      char: "p",
+      description: "preview the image in terminal"
+    }),
     width: Flags.integer({ char: "w", description: "width of the decoded image" })
   };
 
@@ -24,7 +33,6 @@ export default class Decode extends Command {
     const { args, flags } = await this.parse(Decode);
 
     const { blurhash } = args;
-    // const file = flags.output ?? "output.png";
     const height = flags.height ?? 30;
     const width = flags.width ?? 40;
     const { preview, file } = flags;
@@ -58,7 +66,5 @@ export default class Decode extends Command {
       const renderedImage = await terminalImage.buffer(imageBuffer, { height, width, });
       stdout.write(`${renderedImage}\n`);
     }
-
-
   }
 }

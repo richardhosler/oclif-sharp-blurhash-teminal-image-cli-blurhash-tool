@@ -14,8 +14,14 @@ export default class Encode extends Command {
   static override description = "Encode a given image to its blurhash.";
 
   static override flags = {
-    componentX: Flags.integer({ char: "x", description: "X components to use for encoding" }),
-    componentY: Flags.integer({ char: "y", description: "X components to use for decoding" }),
+    componentX: Flags.integer({
+      char: "x",
+      description: "X components to use for encoding"
+    }),
+    componentY: Flags.integer({
+      char: "y",
+      description: "X components to use for decoding"
+    }),
     raw: Flags.boolean({ char: "r" }),
   };
 
@@ -31,7 +37,13 @@ export default class Encode extends Command {
       .raw()
       .ensureAlpha()
       .toBuffer({ resolveWithObject: true });
-    const blurhash = encode(new Uint8ClampedArray(data), info.width, info.height, componentX, componentY);
+    const blurhash = encode(
+      new Uint8ClampedArray(data),
+      info.width,
+      info.height,
+      componentX,
+      componentY
+    );
     if (raw) {
       stdout.write(`${blurhash}\n`);
     } else {
