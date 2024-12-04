@@ -1,22 +1,22 @@
-import { Args, Command, Flags } from '@oclif/core';
-import { encode } from 'blurhash';
-import { readFileSync } from 'node:fs';
-import sharp from 'sharp';
+import { Args, Command, Flags } from "@oclif/core";
+import { encode } from "blurhash";
+import { readFileSync } from "node:fs";
+import { stdout } from "node:process";
+import sharp from "sharp";
 
-import { displayTable } from '../table.js';
-import { stdout } from 'node:process';
+import { displayTable } from "../table.js";
 
 export default class Encode extends Command {
   static override args = {
-    file: Args.string({ description: 'file to read', required: true }),
+    file: Args.string({ description: "File to read", required: true }),
   };
 
-  static override description = 'Encode a given image to its blurhash.';
+  static override description = "Encode a given image to its blurhash.";
 
   static override flags = {
-    componentX: Flags.integer({ char: 'x' }),
-    componentY: Flags.integer({ char: 'y' }),
-    raw: Flags.boolean({ char: 'r' }),
+    componentX: Flags.integer({ char: "x", description: "X components to use for encoding" }),
+    componentY: Flags.integer({ char: "y", description: "X components to use for decoding" }),
+    raw: Flags.boolean({ char: "r" }),
   };
 
   public async run(): Promise<void> {
@@ -38,7 +38,7 @@ export default class Encode extends Command {
       displayTable(
         {
           boldHeading: true, data: {
-            headers: ['File', 'BlurHash', 'ComponentX', 'ComponentY'],
+            headers: ["File", "BlurHash", "ComponentX", "ComponentY"],
             values: [[args.file, blurhash, componentX.toString(), componentY.toString()]],
           }
         }

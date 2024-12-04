@@ -1,12 +1,11 @@
 {
   "name": "blur-hash-oclif",
-  "description": "A new CLI generated with oclif",
-  "version": "0.0.0",
+  "description": "A CLI to encode and decode blurhashes",
+  "version": "0.0.1",
   "author": "richardhosler",
   "bin": {
     "blur-hash-oclif": "./bin/run.js"
   },
-  "bugs": "https://github.com/richardhosler/blur-hash-oclif/issues",
   "dependencies": {
     "@oclif/core": "^4.0.33",
     "@oclif/plugin-help": "^6",
@@ -23,10 +22,6 @@
     "@types/mocha": "^10",
     "@types/node": "^18",
     "chai": "^4",
-    "eslint": "^8",
-    "eslint-config-oclif": "^5",
-    "eslint-config-oclif-typescript": "^3",
-    "eslint-config-prettier": "^9",
     "mocha": "^10",
     "oclif": "^4",
     "shx": "^0.3.3",
@@ -41,7 +36,7 @@
     "/dist",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/richardhosler/blur-hash-oclif",
+  "homepage": "https://github.com/richardhosler/oclif-sharp-blurhash-teminal-image-cli-blurhash-tool",
   "keywords": [
     "oclif"
   ],
@@ -57,7 +52,6 @@
       "@oclif/plugin-plugins"
     ]
   },
-  "repository": "richardhosler/blur-hash-oclif",
   "scripts": {
     "build": "shx rm -rf dist && shx rm tsconfig.tsbuildinfo && tsc -b",
     "lint": "eslint . --ext .ts",
@@ -65,7 +59,8 @@
     "posttest": "shx rm test/output.png",
     "prepack": "oclif manifest && oclif readme",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
-    "version": "oclif readme && git add README.md"
+    "version": "oclif readme && git add README.md",
+    "blurhash": "./bin/run.js"
   },
   "types": "dist/index.d.ts",
   "overrides": {

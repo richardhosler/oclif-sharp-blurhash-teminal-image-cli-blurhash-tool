@@ -115,34 +115,35 @@ function splitString(string: string, maxLength: number): string[] {
     return result;
 }
 
-function printTableTop(columnWidths: number[], bold: boolean): void {
-    let output = bold ? "┏" : "┌";
-    for (let i = 0; i < columnWidths.length; i++) {
-        output += bold ? "━".repeat(columnWidths[i]) : "─".repeat(columnWidths[i]);
-        output += bold ? i === columnWidths.length - 1 ? "┓\n" : "┳" : i === columnWidths.length - 1 ? "┐\n" : "┬";
-    }
+function printTableTop(columnWidths: number[], bold: boolean) {
+    const topChar = bold ? "┏" : "┌";
+    const separatorChar = bold ? "━" : "─";
+    const junctionChar = bold ? "┳" : "┬";
+    const endChar = bold ? "┓" : "┐";
+
+    const topRow = columnWidths.map(width => separatorChar.repeat(width)).join(junctionChar);
+    const output = `${topChar}${topRow}${endChar}\n`;
 
     stdout.write(output);
 }
 
-function printSeparator(columnWidths: number[], bold: boolean): void {
-    let output = bold ? "┡" : "├";
-    for (let i = 0; i < columnWidths.length; i++) {
-        output += bold ? "━".repeat(columnWidths[i]) : "─".repeat(columnWidths[i]);
-        output += bold ? i === columnWidths.length - 1 ? "┩\n" : "╇" : i === columnWidths.length - 1 ? "┤\n" : "┼";
-    }
+function printSeparator(columnWidths: number[], bold: boolean) {
+    const separatorChar = bold ? "━" : "─";
+    const cornerChar = bold ? "┡" : "├";
+    const junctionChar = bold ? "╇" : "┼";
+    const endChar = bold ? "┩" : "┤";
+
+    const separatorRow = columnWidths.map(width => separatorChar.repeat(width)).join(junctionChar);
+    const output = `${cornerChar}${separatorRow}${endChar}\n`;
 
     stdout.write(output);
 }
 
 function printTableBottom(columnWidths: number[]) {
-    let output = "└";
-    for (let i = 0; i < columnWidths.length; i++) {
-        output += "─".repeat(columnWidths[i]);
-        output += i === columnWidths.length - 1 ? "┘\n" : "┴";
-    }
+    const bottomRow = columnWidths.map(width => "─".repeat(width)).join("┴");
+    const output = `└${bottomRow}┘\n`;
 
-    stdout.write(output)
+    stdout.write(output);
 }
 
 function printValues(columnWidths: number[], values: string[], bold: boolean) {
@@ -154,7 +155,3 @@ function printValues(columnWidths: number[], values: string[], bold: boolean) {
     output += "\n"
     stdout.write(output);
 }
-
-
-// Box characters
-// ┏ ━ ┓ ┃ ┡ ┩ │ ├ ┤ └ ┘ ┳ ┻ ┴ ┬ ┌ ─ ┐ ┼ ╀ ╇

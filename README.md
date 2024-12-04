@@ -1,13 +1,15 @@
 # OCLIF Sharp Blurhash Image-to-Blurhash CLI
 
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Mocha](https://img.shields.io/badge/-mocha-%238D6748?style=for-the-badge&logo=mocha&logoColor=white)
+
 This is a Node.js CLI application written in TypeScript that allows you to encode images using blurhash, it leverages the power of oclif, sharp, blurhash, and terminal-image libraries.
 
 ## Features
 
-  * Encode images to Blurhash strings
-  * Decode Blurhash strings to images
-  * Convert an image to it's blurred counterpart
-  * Optionally render a terminal-friendly preview of the images created
+  * 📸 Encode images to Blurhash strings
+  * 🖼️ Decode Blurhash strings to images
+  * 🌫️ Convert an image to its blurred counterpart
+  * 🖥️ Optionally render a terminal-friendly preview of the images created
 
 ## Technologies
 
@@ -19,7 +21,7 @@ This is a Node.js CLI application written in TypeScript that allows you to encod
 
 ## Usage
 ```
-  $ run.js [COMMAND]
+  $ npm run blurhash [COMMAND]
 
   TOPICS
     plugins  List installed plugins.
@@ -42,3 +44,13 @@ To run tests
 ## Screenshot
 
 ![Screenshot](./screenshot/Screenshot.png)
+![help](./screenshot/help.png)
+
+## Aknowledgements
+
+  * [oclif](https://oclif.io/): A Node.js framework for building command-line interfaces.
+  * [sharp](https://sharp.pixelplumbing.com/): A high-performance Node.js library for image processing.
+  * [blurhash](https://blurhash.com/): A technique for generating compact representations of images.
+  * [terminal-image](https://github.com/sindresorhus/terminal-image): A Node.js library for rendering images directly in the terminal.
+  * [mocha](https://mochajs.org/): A JavaScript test framework.
+  * [chai](https://www.chaijs.com/): A BDD / TDD assertion library for node and the browser that can be paired with any testing framework.
