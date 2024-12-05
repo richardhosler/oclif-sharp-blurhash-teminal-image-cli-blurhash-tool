@@ -21,7 +21,7 @@ This is a Node.js CLI application written in TypeScript that allows you to encod
 
 ## Usage
 ```
-  $ npm run blurhash [COMMAND]
+  $ ./run.js [COMMAND]
 
   TOPICS
     plugins  List installed plugins.
